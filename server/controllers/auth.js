@@ -1,7 +1,7 @@
-import mongoose from "mongoose"
 import User from "../models/User.js"
 import bcrypt from "bcryptjs";
 import { createError } from "../error.js";
+import jwt from "jsonwebtoken";
 
 export const signup = async (req, res, next) => {
     try {
@@ -23,8 +23,14 @@ export const signin = async (req, res, next) => {
         if (!control) {
             return next(createError(400,"wrong password"))
         }
-        const token = jwt.sign({id:user._id})//look here
+        const token = jwt.sign({id:user._id}, "${process.env.JWT_SECRET_KEY}");
+        const {password, ...others} = user._doc
+        
+        res.cookie("access_token", token, {
+            httpOnly: true
+        }).status(200).json(others);
     } catch (err) {
+        console.log(err)
         next(err);
     }
 }
