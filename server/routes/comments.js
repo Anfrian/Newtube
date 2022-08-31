@@ -1,15 +1,10 @@
 import express from "express";
-import { addComment, deleteComment, getComment, updateComment } from "../controllers/comment.js"
-import { verifyToken } from "../verifyToken.js";
-
-const router = express.Router()
+import { addComment, deleteComment, getComments } from "../controllers/comment.js";
+import {verifyToken} from "../verifyToken.js"
+const router = express.Router();
 
 router.post("/", verifyToken, addComment)
-
 router.delete("/:id", verifyToken, deleteComment)
-
-router.get("/:videoId", verifyToken, getComment)
-
-router.put("/:id", verifyToken, updateComment)
+router.get("/:videoId", getComments)
 
 export default router;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import NewTube from "../img/logo.png";
+import LamaTube from "../img/logo.png";
 import HomeIcon from "@mui/icons-material/Home";
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
 import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
@@ -83,30 +83,31 @@ const Title = styled.h2`
 `;
 
 const Menu = ({ darkMode, setDarkMode }) => {
-
-  const { currentUser } = useSelector((state) => state.user)
-
+  const { currentUser } = useSelector((state) => state.user);
 
   return (
     <Container>
       <Wrapper>
         <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
           <Logo>
-            <Img src={NewTube} />
-            NewTube
+            <Img src={LamaTube} />
+            LamaTube
           </Logo>
         </Link>
         <Item>
           <HomeIcon />
           Home
         </Item>
-        <Link to="trends" style={{textDecoration:"none", color: "inherit"}}>
+        <Link to="trends" style={{ textDecoration: "none", color: "inherit" }}>
           <Item>
             <ExploreOutlinedIcon />
             Explore
           </Item>
         </Link>
-        <Link to="subscriptions" style={{textDecoration:"none", color: "inherit"}}>
+        <Link
+          to="subscriptions"
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
           <Item>
             <SubscriptionsOutlinedIcon />
             Subscriptions
@@ -122,11 +123,11 @@ const Menu = ({ darkMode, setDarkMode }) => {
           History
         </Item>
         <Hr />
-        {!currentUser && 
+        {!currentUser &&
           <>
             <Login>
               Sign in to like videos, comment, and subscribe.
-              <Link to="signin" style={{textDecoration:"none"}}>
+              <Link to="signin" style={{ textDecoration: "none" }}>
                 <Button>
                   <AccountCircleOutlinedIcon />
                   SIGN IN
@@ -136,7 +137,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
             <Hr />
           </>
         }
-        <Title>BEST OF NEWTUBE</Title>
+        <Title>BEST OF LAMATUBE</Title>
         <Item>
           <LibraryMusicOutlinedIcon />
           Music
